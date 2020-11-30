@@ -1,0 +1,25 @@
+import  'web_css.appmask'
+
+System.ShowDesktop DesktopOperation:System.DesktopOperation.Show
+
+
+WebAutomation.LaunchChrome Url: 'https://www.naver.com/' WindowState:WebAutomation.BrowserWindowState.Maximized \
+ ClearCache:False ClearCookies:False BrowserInstance=> Browser1
+
+wait 3
+
+WebAutomation.FormFilling.PopulateTextField BrowserInstance: Browser1 \
+    Control: web_css.New_Application.Web_Page_https_www_naver_com.input_text_query \
+    Text: '코로나' EmulateTyping:True UnfocusAfterPopulate:False
+
+WebAutomation.FormFilling.PressButton BrowserInstance: Browser1 \
+    Control: web_css.New_Application.Web_Page_https_www_naver_com.span_ico_search_submit
+    
+wait 5
+
+WebAutomation.CloseWebBrowser BrowserInstance: Browser1
+
+wait 1
+
+System.ShowDesktop DesktopOperation:System.DesktopOperation.Hide
+ 
