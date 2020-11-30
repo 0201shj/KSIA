@@ -1,3 +1,5 @@
+import  'uiNotepad1.appmask'
+
 
 set id to 'jsjeong'
 set pwd to 'jsjeong_pwd'
@@ -21,6 +23,23 @@ MouseAndKeyboard.SendKeys TextToSend: id DelayBetweenKeystrokes:10
 MouseAndKeyboard.SendKeys TextToSend: '{enter}' DelayBetweenKeystrokes:10
 MouseAndKeyboard.SendKeys TextToSend: pwd DelayBetweenKeystrokes:10
 MouseAndKeyboard.SendKeys TextToSend: '{enter}' DelayBetweenKeystrokes:10
+
+wait 2
+
+MouseAndKeyboard.SendKeys TextToSend: '{Alt}({E}{A})' DelayBetweenKeystrokes:10
+
+wait 1
+
+MouseAndKeyboard.SendKeys TextToSend: '{Alt}({O}{F})' DelayBetweenKeystrokes:10
+
+wait 3
+
+UIAutomation.FormFilling.FocusTextField TextField: uiNotepad1.Notepad.Window_Windows_1.Edit_Y
+UIAutomation.FormFilling.PopulateTextField TextField: uiNotepad1.Notepad.Window_Windows_1.Edit_Y Text: '기울임꼴'
+
+UIAutomation.Click Element: uiNotepad1.Notepad.Window_Windows_1.Button \
+ ClickType:UIAutomation.ClickType.LeftClick MousePositionRelativeToElement:UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX:0 OffsetY:0
+
 wait 3
 
 MouseAndKeyboard.SendKeys TextToSend: '{Alt}({F}{X})' DelayBetweenKeystrokes:10
