@@ -1,0 +1,11 @@
+
+function today
+    DateTime.Current DateTimeFormat:DateTimeFormat.DateAndTime Offset:'9' \
+     CurrentDateTime=> CurrentDateTime
+     
+     Console.Write Message: ''
+     Console.Write Message: '시간: '+CurrentDateTime
+     Console.Write Message: ''
+end
+
+call today
