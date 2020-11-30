@@ -1,0 +1,48 @@
+import  'web_css.appmask'
+
+set text1 to 'NCL-77'
+
+System.ShowDesktop DesktopOperation:System.DesktopOperation.Show
+
+
+WebAutomation.LaunchChrome Url: 'https://www.gmarket.co.kr/' WindowState:WebAutomation.BrowserWindowState.Maximized \
+ ClearCache:False ClearCookies:False BrowserInstance=> Browser1
+
+wait 3
+
+WebAutomation.FormFilling.PopulateTextField BrowserInstance: Browser1 \
+    Control: web_css.New_Application.Web_Page_https_www_gmarket_co_kr.input_text_form_input \
+    Text: text1 EmulateTyping:True UnfocusAfterPopulate:False
+
+/#
+WebAutomation.FormFilling.PressButton BrowserInstance: Browser1 \
+    Control: web_css.New_Application.Web_Page_https_www_naver_com.span_ico_search_submit
+#/
+
+wait 3
+
+MouseAndKeyboard.SendKeys TextToSend: '{enter}' DelayBetweenKeystrokes:10
+
+wait 3
+
+
+WebAutomation.DataExtraction.GetDetailsOfElement BrowserInstance: Browser1 \
+ Control: web_css.New_Application.Web_Page_gmarket_co_kr_NCL_77.strong_text_text_value \
+ AttributeName:'Own Text' AttributeValue=> AttributeValue1
+ 
+WebAutomation.DataExtraction.GetDetailsOfElement BrowserInstance: Browser1 \
+ Control: web_css.New_Application.Web_Page_gmarket_co_kr_NCL_77.span_text_seller \
+ AttributeName:'Own Text' AttributeValue=> AttributeValue2
+
+
+WebAutomation.CloseWebBrowser BrowserInstance: Browser1
+
+wait 1
+
+Console.Write Message: '제품 가격: '+AttributeValue1
+Console.Write Message: '업 체 명: '+AttributeValue2
+
+#wait 3
+
+System.ShowDesktop DesktopOperation:System.DesktopOperation.Hide
+ 
