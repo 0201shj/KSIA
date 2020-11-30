@@ -1,0 +1,29 @@
+
+set id to 'jsjeong'
+set pwd to 'jsjeong_pwd'
+
+
+# C:\Windows\System32\notepad.exe
+
+set notepad to 'C:\Windows\System32\notepad.exe'
+
+System.RunApplication ApplicationPath: notepad \
+    CommandLineArguments:'' WorkingDirectory:'C:\Users\user\Desktop' \
+    WindowStyle:System.ProcessWindowStyle.Normal ProcessId=> ProcessId
+    
+    
+wait 3
+
+#System.TerminateProcessById ProcessId: ProcessId
+
+wait 3
+MouseAndKeyboard.SendKeys TextToSend: id DelayBetweenKeystrokes:10
+MouseAndKeyboard.SendKeys TextToSend: '{enter}' DelayBetweenKeystrokes:10
+MouseAndKeyboard.SendKeys TextToSend: pwd DelayBetweenKeystrokes:10
+MouseAndKeyboard.SendKeys TextToSend: '{enter}' DelayBetweenKeystrokes:10
+wait 3
+
+MouseAndKeyboard.SendKeys TextToSend: '{Alt}({F}{X})' DelayBetweenKeystrokes:10
+wait 1
+MouseAndKeyboard.SendKeys TextToSend: '{Alt}({N})' DelayBetweenKeystrokes:10
+
