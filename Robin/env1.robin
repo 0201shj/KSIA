@@ -1,0 +1,20 @@
+
+System.GetEnvironmentVariable Name: 'USERNAME' Value=> use_value
+
+
+set desktop_dir to 'C:\Users\\'+use_value+'\Desktop'
+
+#Console.Write Message: desktop_dir
+
+
+Cmd.Open Directory: desktop_dir Session=> Session
+
+wait 1
+
+Cmd.Write Session: Session  Command: 'dir' SendEnter:True
+
+Cmd.Read Session: Session  CmdOutput=> CmdOutput
+
+wait 1
+
+Console.Write Message: CmdOutput
